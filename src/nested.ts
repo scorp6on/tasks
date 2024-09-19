@@ -141,7 +141,7 @@ export function addNewQuestion(
         body: "",
         expected: "",
         options: [],
-        points: 0,
+        points: 1,
         published: false,
     };
     return [...questions, blankQuestion];
@@ -233,7 +233,11 @@ export function duplicateQuestionInArray(
     if (index === -1) {
         return questions;
     }
-    const duplicate = { ...questions[index], id: newId };
+    const duplicate = {
+        ...questions[index],
+        id: newId,
+        name: `Copy of ${questions[index].name}`,
+    };
     const newQuestions = [...questions];
     newQuestions.splice(index + 1, 0, duplicate);
     return newQuestions;
